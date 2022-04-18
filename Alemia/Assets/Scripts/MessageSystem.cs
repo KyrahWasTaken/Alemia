@@ -13,7 +13,7 @@ public class MessageSystem : MonoBehaviour
     public GameObject MessagesZone;
     public GameObject Message;
 
-    private List<GameObject> Messages;
+    public List<GameObject> Messages;
 
     // Start is called before the first frame update
     void Start()
@@ -33,16 +33,17 @@ public class MessageSystem : MonoBehaviour
     IEnumerator CreateMessage(string text)
     {
         GameObject newMessage = Instantiate(Message,MessagesZone.transform);
-        newMessage.GetComponent<Text>().text = text;
-        Messages.Add(newMessage);
         RectTransform T = newMessage.GetComponent<RectTransform>();
+        
+        Messages.Add(newMessage);
+        
+        newMessage.GetComponent<Text>().text = text;
+        
         Vector3 pos = T.position;
-        Debug.Log($"pos={pos}");
         Vector3 offscreen = new Vector3(offscreenspace, 0, 0);
-        T.position -= offscreen;
-        Debug.Log($"pos={pos}");
 
         //emerging loop:
+        T.position -= offscreen;
         while (Mathf.Abs((pos-T.position).x) >=  0.1f)
         {
             int order = Messages.Count - Messages.IndexOf(newMessage);
@@ -50,6 +51,7 @@ public class MessageSystem : MonoBehaviour
             T.position = Vector3.Lerp(T.position, pos + yOffset, emergeSpeed);
             yield return new WaitForEndOfFrame();
         }
+
         //wait loop;
         float time = 0;
         while (time < awaitTime)
@@ -60,6 +62,7 @@ public class MessageSystem : MonoBehaviour
             time += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+
         //quit loop;
         pos = T.position - offscreen;
         while (Mathf.Abs((pos - T.position).x) >= 0.1f)
@@ -67,6 +70,7 @@ public class MessageSystem : MonoBehaviour
             T.position = Vector3.Lerp(T.position, pos, emergeSpeed);
             yield return new WaitForEndOfFrame();
         }
+
         Messages.Remove(newMessage);
         Destroy(newMessage);
 

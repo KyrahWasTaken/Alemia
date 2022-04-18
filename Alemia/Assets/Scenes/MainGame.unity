@@ -3758,7 +3758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba9a5c311d65524d841f3aa9ed085ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emergeSpeed: 0.005
+  emergeSpeed: 0.01
   awaitTime: 1
   spacing: 15
   offscreenspace: 150
