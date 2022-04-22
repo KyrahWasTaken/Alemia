@@ -9,6 +9,7 @@ public enum EntityType
 public class Entity : MonoBehaviour
 {
     public EntityType[] entityTags;
+    public GameObject hitObject;
     #region characteristics
     public int baseHealth;
     public int maxHealth;
@@ -34,7 +35,15 @@ public class Entity : MonoBehaviour
     #endregion
     #region abilities
     #endregion
-    // Update is called once per frame
+    public delegate void changeOnHP(int max, int current);
+    public event changeOnHP OnHPChanged;
+    public void changeHealth(int value)
+    {
+        health += value;
+        if (health <= 0)
+            Destroy(gameObject);
+        OnHPChanged.Invoke(maxHealth, health);
+    }
     void UpdateCharacteristics()
     {
         maxHealth = baseHealth + physicalSkills * 5 + empathySkills;
@@ -44,12 +53,10 @@ public class Entity : MonoBehaviour
         attackSpeed = 5 + physicalSkills / 10 + intellectualSkills / 10;
         damage = 1 + physicalSkills + intellectualSkills / 10;
     }
-    private void Start()
+    public void Attack(Vector2 direction)
     {
-        
-    }
-    void Update()
-    {
-        
+        GameObject a = Instantiate(hitObject, transform.position,Quaternion.identity);
+        a.GetComponent<Hit>().direction = direction;
+        a.GetComponent<Hit>().self = transform;
     }
 }

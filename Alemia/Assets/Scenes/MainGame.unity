@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  isAtacking: 0
 --- !u!61 &39230222
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -231,6 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityTags: 
+  hitObject: {fileID: 4698822389979498453, guid: c1b01d74027aea6478365c1967adf919, type: 3}
   baseHealth: 10
   maxHealth: 10
   health: 10
@@ -241,7 +243,7 @@ MonoBehaviour:
   maxThirst: 0
   thirst: 0
   speed: 0
-  attackSpeed: 0
+  attackSpeed: 2
   damage: 0
   physicalSkills: 0
   intellectualSkills: 0
@@ -3657,6 +3659,7 @@ GameObject:
   - component: {fileID: 1408339020}
   - component: {fileID: 1408339019}
   - component: {fileID: 1408339023}
+  - component: {fileID: 1408339024}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3764,6 +3767,20 @@ MonoBehaviour:
   offscreenspace: 150
   MessagesZone: {fileID: 202902751}
   Message: {fileID: 2183852622297710592, guid: 714fb1e14fc7f6744949d0d01932d247, type: 3}
+  Messages: []
+--- !u!114 &1408339024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408339018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c223d570182a4794e989761e2d97bdf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbar: {fileID: 492581636}
 --- !u!1 &1655114766
 GameObject:
   m_ObjectHideFlags: 0
@@ -3909,6 +3926,14 @@ PrefabInstance:
     - target: {fileID: 7122415747651924165, guid: 12f5aba39506200429ec15d47300808e, type: 3}
       propertyPath: speed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7122415747651924165, guid: 12f5aba39506200429ec15d47300808e, type: 3}
+      propertyPath: hitObject
+      value: 
+      objectReference: {fileID: 4698822389979498453, guid: c1b01d74027aea6478365c1967adf919, type: 3}
+    - target: {fileID: 7122415747651924165, guid: 12f5aba39506200429ec15d47300808e, type: 3}
+      propertyPath: attackSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7122415747651924165, guid: 12f5aba39506200429ec15d47300808e, type: 3}
       propertyPath: entityTags.Array.size
