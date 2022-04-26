@@ -535,6 +535,124 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547017618}
   m_CullTransparentMesh: 1
+--- !u!1 &743530816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 743530817}
+  - component: {fileID: 743530819}
+  - component: {fileID: 743530818}
+  m_Layer: 0
+  m_Name: Biomes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &743530817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743530816}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1842274966}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!483693784 &743530818
+TilemapRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743530816}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_ChunkSize: {x: 32, y: 32, z: 32}
+  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_MaxChunkCount: 16
+  m_MaxFrameAge: 16
+  m_SortOrder: 0
+  m_Mode: 0
+  m_DetectChunkCullingBounds: 0
+  m_MaskInteraction: 0
+--- !u!1839735485 &743530819
+Tilemap:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743530816}
+  m_Enabled: 1
+  m_Tiles: {}
+  m_AnimatedTiles: {}
+  m_TileAssetArray: []
+  m_TileSpriteArray: []
+  m_TileMatrixArray: []
+  m_TileColorArray: []
+  m_TileObjectToInstantiateArray: []
+  m_AnimationFrameRate: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Origin: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0, y: 0, z: 1}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
+  m_TileOrientation: 0
+  m_TileOrientationMatrix:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
 --- !u!1 &834383196
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,7 +993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1166346511
 Transform:
   m_ObjectHideFlags: 0
@@ -3810,33 +3928,185 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7a9d768d5260b49b78b55985ce1dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generators:
-  - tiles:
-    - tile: {fileID: 11400000, guid: ca7a21d412db86f4786297facbd44149, type: 2}
-      height: 0.594
-      Boundary: 1
-      isMask: 1
-      maskName: Ocean
-    - tile: {fileID: 11400000, guid: 423979162239e53489d50e962c942ece, type: 2}
-      height: 0.611
-      Boundary: 0
-      isMask: 0
-      maskName: 
-    - tile: {fileID: 11400000, guid: 60635fa83e5218847b1735c0b95f16cf, type: 2}
-      height: 1
-      Boundary: 0
-      isMask: 1
-      maskName: Land
+  hGen:
     noises:
     - strength: 1
-      seed: 114.2
+      seed: 5367
+      scaleX: 100
+      scaleY: 100
+  tGen:
+    noises:
+    - strength: 1
+      seed: 86348540
+      scaleX: 150
+      scaleY: 150
+  eGen:
+    noises:
+    - strength: 1
+      seed: 500
       scaleX: 500
       scaleY: 500
-  chunkSize: 16
+    - strength: 0.5
+      seed: 1012455
+      scaleX: 250
+      scaleY: 250
+    - strength: 0.25
+      seed: 10105436
+      scaleX: 125
+      scaleY: 125
+  mGen:
+    noises:
+    - strength: 1
+      seed: 153535
+      scaleX: 125
+      scaleY: 125
+    - strength: 0.5
+      seed: 123222
+      scaleX: 65
+      scaleY: 65
+  lGen:
+    noises:
+    - strength: 1
+      seed: 1051035
+      scaleX: 250
+      scaleY: 250
+  biomes:
+  - name: MagicLands
+    Humidity: {x: 0.4, y: 0.7}
+    Evil: {x: 0, y: 0.4}
+    Temperature: {x: 0.3, y: 0.6}
+    Magic: {x: 0.3, y: 1}
+    Life: {x: 0.3, y: 1}
+    biomeTile: {fileID: 11400000, guid: 4f923a6c9749511499d2aa1c4c8099db, type: 2}
+  - name: FairyForest
+    Humidity: {x: 0.4, y: 0.7}
+    Evil: {x: 0, y: 0.3}
+    Temperature: {x: 0.4, y: 0.6}
+    Magic: {x: 0.7, y: 1}
+    Life: {x: 0.7, y: 1}
+    biomeTile: {fileID: 11400000, guid: 28f9ef45ce167b2438bb2b39233b4242, type: 2}
+  - name: Swamp
+    Humidity: {x: 0.6, y: 0.8}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.5, y: 0.8}
+    Magic: {x: 0.3, y: 1}
+    Life: {x: 0.6, y: 1}
+    biomeTile: {fileID: 11400000, guid: 62421c6b46efa55459820cfe1f78bc5e, type: 2}
+  - name: Desert
+    Humidity: {x: 0, y: 0.3}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.7, y: 1}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0, y: 0.2}
+    biomeTile: {fileID: 11400000, guid: 8f997b54e8214ae4eaabb673a25e20f1, type: 2}
+  - name: Wasteland
+    Humidity: {x: 0, y: 0.3}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.4, y: 0.7}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0, y: 0.4}
+    biomeTile: {fileID: 11400000, guid: 1f7fae234afe03745bfd3700bb8eb5d1, type: 2}
+  - name: WoodLand
+    Humidity: {x: 0.5, y: 0.65}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.3, y: 0.6}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0.5, y: 0.7}
+    biomeTile: {fileID: 11400000, guid: 41f1af13c06116643938b990cc47b6a0, type: 2}
+  - name: DeadLands
+    Humidity: {x: 0, y: 0.1}
+    Evil: {x: 0.6, y: 1}
+    Temperature: {x: 0, y: 1}
+    Magic: {x: 0, y: 0.7}
+    Life: {x: 0, y: 0.3}
+    biomeTile: {fileID: 11400000, guid: 4b07642fb68621340b9ec093acfb6c79, type: 2}
+  - name: Plains
+    Humidity: {x: 0.4, y: 0.6}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.3, y: 0.7}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0.3, y: 0.6}
+    biomeTile: {fileID: 11400000, guid: 1861113b1950d354fbecc1ac88725622, type: 2}
+  - name: Steppe
+    Humidity: {x: 0.3, y: 0.5}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.5, y: 0.7}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0.3, y: 0.6}
+    biomeTile: {fileID: 11400000, guid: f1b03701d72c19b448792cf4945713d8, type: 2}
+  - name: MidLands
+    Humidity: {x: 0.2, y: 0.5}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.2, y: 0.5}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0.3, y: 0.6}
+    biomeTile: {fileID: 11400000, guid: b6fd5a33e94a38a4e8279a7d0e9cb6fb, type: 2}
+  - name: Jungle
+    Humidity: {x: 0.2, y: 0.6}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.2, y: 0.6}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0.4, y: 0.6}
+    biomeTile: {fileID: 11400000, guid: 30966d640ceaaf4489cb19be6fb95aa1, type: 2}
+  - name: Savanna
+    Humidity: {x: 0.1, y: 0.4}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.3, y: 0.6}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0.2, y: 0.6}
+    biomeTile: {fileID: 11400000, guid: 02f8151b9ea593947b80482236217c9c, type: 2}
+  - name: MangroveWoods
+    Humidity: {x: 0.6, y: 0.8}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.3, y: 0.6}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0.4, y: 1}
+    biomeTile: {fileID: 11400000, guid: 763206f70988e5c418069b584a41b6f1, type: 2}
+  - name: Marsh
+    Humidity: {x: 0.6, y: 0.8}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.3, y: 0.5}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0, y: 0.5}
+    biomeTile: {fileID: 11400000, guid: 12004a6e740a3884eb11b09bcf5adb0a, type: 2}
+  - name: Ocean
+    Humidity: {x: 0.8, y: 1}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0, y: 1}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0, y: 1}
+    biomeTile: {fileID: 11400000, guid: a345fcc9207f7684888ba8c2b512bd16, type: 2}
+  - name: Tundra
+    Humidity: {x: 0.2, y: 0.6}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.1, y: 0.3}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0, y: 1}
+    biomeTile: {fileID: 11400000, guid: fd0c11cdc839cb948b58060d943e9a86, type: 2}
+  - name: IceLands
+    Humidity: {x: 0, y: 0.3}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0, y: 0.3}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0, y: 1}
+    biomeTile: {fileID: 11400000, guid: 9eaa7c996ef85894c8c288c920f81284, type: 2}
+  - name: StrangeLand
+    Humidity: {x: 0, y: 1}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0, y: 1}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0, y: 1}
+    biomeTile: {fileID: 11400000, guid: 95c4be6eb7744f34b87d649b963c335c, type: 2}
+  - name: IcePeakWoods
+    Humidity: {x: 0, y: 1}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0, y: 1}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0, y: 1}
+    biomeTile: {fileID: 11400000, guid: 95c4be6eb7744f34b87d649b963c335c, type: 2}
+  chunkSize: 256
   chunkRenderDistance: 2
   maxChunksLoaded: 100
-  ground: {fileID: 1166346513}
-  boundary: {fileID: 987787919}
 --- !u!4 &1655114768
 Transform:
   m_ObjectHideFlags: 0
@@ -3980,6 +4250,9 @@ Transform:
   m_Children:
   - {fileID: 1166346511}
   - {fileID: 987787916}
+  - {fileID: 1991815930}
+  - {fileID: 1941737863}
+  - {fileID: 743530817}
   m_Father: {fileID: 1655114768}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3995,3 +4268,239 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!1 &1941737862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1941737863}
+  - component: {fileID: 1941737865}
+  - component: {fileID: 1941737864}
+  m_Layer: 0
+  m_Name: Trees
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1941737863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941737862}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1842274966}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!483693784 &1941737864
+TilemapRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941737862}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_ChunkSize: {x: 32, y: 32, z: 32}
+  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_MaxChunkCount: 16
+  m_MaxFrameAge: 16
+  m_SortOrder: 0
+  m_Mode: 0
+  m_DetectChunkCullingBounds: 0
+  m_MaskInteraction: 0
+--- !u!1839735485 &1941737865
+Tilemap:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941737862}
+  m_Enabled: 1
+  m_Tiles: {}
+  m_AnimatedTiles: {}
+  m_TileAssetArray: []
+  m_TileSpriteArray: []
+  m_TileMatrixArray: []
+  m_TileColorArray: []
+  m_TileObjectToInstantiateArray: []
+  m_AnimationFrameRate: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Origin: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0, y: 0, z: 1}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
+  m_TileOrientation: 0
+  m_TileOrientationMatrix:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+--- !u!1 &1991815929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1991815930}
+  - component: {fileID: 1991815932}
+  - component: {fileID: 1991815931}
+  m_Layer: 0
+  m_Name: Flowers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1991815930
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991815929}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1842274966}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!483693784 &1991815931
+TilemapRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991815929}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_ChunkSize: {x: 32, y: 32, z: 32}
+  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_MaxChunkCount: 16
+  m_MaxFrameAge: 16
+  m_SortOrder: 0
+  m_Mode: 0
+  m_DetectChunkCullingBounds: 0
+  m_MaskInteraction: 0
+--- !u!1839735485 &1991815932
+Tilemap:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991815929}
+  m_Enabled: 1
+  m_Tiles: {}
+  m_AnimatedTiles: {}
+  m_TileAssetArray: []
+  m_TileSpriteArray: []
+  m_TileMatrixArray: []
+  m_TileColorArray: []
+  m_TileObjectToInstantiateArray: []
+  m_AnimationFrameRate: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Origin: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0, y: 0, z: 1}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
+  m_TileOrientation: 0
+  m_TileOrientationMatrix:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1

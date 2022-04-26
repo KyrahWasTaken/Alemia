@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.Tilemaps;
 using UnityEngine;
-using System;
 
 public class TerrainGenerator : MonoBehaviour
 {
@@ -11,8 +10,28 @@ public class TerrainGenerator : MonoBehaviour
     [System.Serializable]
     public struct Generator
     {
-        public TileHeight[] tiles;
         public Noise[] noises;
+    }
+    [System.Serializable]
+    public struct Biome
+    {
+        public string name;
+        public Vector2 Humidity;
+        public Vector2 Evil;
+        public Vector2 Temperature;
+        public Vector2 Magic;
+        public Vector2 Life;
+        public bool IsBiomeAllowed(float h, float t, float e, float m, float l)
+        {
+            if (h > Humidity.x && h < Humidity.y)
+                if (e > Evil.x && e < Evil.y)
+                    if (t > Temperature.x && t < Temperature.y)
+                        if (m > Magic.x && m < Magic.y)
+                            if (l > Life.x && l < Life.y)
+                                return true;
+            return false;
+        }
+        public TileBase biomeTile;
     }
     [System.Serializable]
     public struct TileHeight
@@ -48,55 +67,94 @@ public class TerrainGenerator : MonoBehaviour
     }
     #endregion
     #region Параметры
-    public Generator[] generators;
+
+    public Generator hGen;
+    public Generator tGen;
+    public Generator eGen;
+    public Generator mGen;
+    public Generator lGen;
+
+    public Biome[] biomes;
 
     public int chunkSize;
     public int chunkRenderDistance;
     public int maxChunksLoaded;
 
-    [HideInInspector]
-    public Tilemap ground;
-    [HideInInspector]
-    public Tilemap boundary;
-    
+    private Tilemap ground;
+    private Tilemap boundary;
+    private Tilemap biomesTM;
+    private Tilemap flowers;
+    private Tilemap trees;
+
     private Transform player;
 
     private List<Vector2Int> loadedChunks;
 
     #endregion
-    public void generateChunk(int chunkX, int chunkY)
+    void NewGenerator(int chunkX, int chunkY)
     {
-        foreach(Generator g in generators)
-        for (int i = 0; i < chunkSize; i++)
+        GenerateBioms(chunkX, chunkY);
+        //GenerateTerrain(chunkX, chunkY);
+        //GenerateFlowers(chunkX, chunkY);
+        //GenerateTrees(chunkX, chunkY);
+        if (loadedChunks != null)
+            loadedChunks.Add(new Vector2Int(chunkX, chunkY));
+        if (boundary != null)
+            boundary.GetComponent<TilemapCollider2D>().ProcessTilemapChanges();
+    }
+
+    private void GenerateBioms(int chunkX, int chunkY)
+    {
+
+        for(int i = 0; i<chunkSize; i++)
         {
-            for (int j = 0; j < chunkSize; j++)
+            for(int j = 0; j<chunkSize; j++)
             {
-                float value = GetNoise(g,chunkX * chunkSize + i, chunkY * chunkSize + j);
-                foreach (TileHeight t in g.tiles)
+                int x = chunkX * chunkSize + i;
+                int y = chunkY * chunkSize + j;
+                
+                float humidity, temperature, evil, magic, life;
+                
+                humidity =      GetNoise(hGen, x, y);
+                temperature =   GetNoise(tGen, x, y);
+                evil =          GetNoise(eGen, x, y);
+                magic =         GetNoise(mGen, x, y);
+                life =          GetNoise(lGen, x, y);
+                //Debug.Log($"Params:{humidity},{temperature},{evil},{magic},{life}");
+                biomesTM.SetTile(new Vector3Int(x, y, 0), biomes.Last().biomeTile);
+                foreach(Biome b in biomes)
                 {
-                    if (value < t.height)
+                    if(b.IsBiomeAllowed(humidity,temperature,evil,magic,life))
                     {
-                        ground.SetTile(new Vector3Int(chunkX * chunkSize + i, chunkY * chunkSize + j, 0), t.tile);
-                        if(t.Boundary)
-                        {
-                        boundary.SetTile(new Vector3Int(chunkX * chunkSize + i, chunkY * chunkSize + j, 0), t.tile);
-                        }
+                        biomesTM.SetTile(new Vector3Int(x,y,0), b.biomeTile);
                         break;
                     }
                 }
             }
         }
-        if(loadedChunks != null)
-        loadedChunks.Add(new Vector2Int(chunkX, chunkY));
-        if (boundary != null)
-        boundary.GetComponent<TilemapCollider2D>().ProcessTilemapChanges();
     }
+
     private void Start()
     {
         ground = transform.GetChild(0).Find("Ground").GetComponent<Tilemap>();
         boundary = transform.GetChild(0).Find("Boundary").GetComponent<Tilemap>();
+        biomesTM = transform.GetChild(0).Find("Biomes").GetComponent<Tilemap>();
+        trees = transform.GetChild(0).Find("Biomes").GetComponent<Tilemap>();
+        flowers = transform.GetChild(0).Find("Flowers").GetComponent<Tilemap>();
+
         loadedChunks = new List<Vector2Int>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        bool random=false;
+        random = true;
+        if(random)
+        {
+            foreach (Noise n in hGen.noises) n.seed = Random.Range(0, 100000);
+            foreach (Noise n in tGen.noises) n.seed = Random.Range(0, 100000);
+            foreach (Noise n in lGen.noises) n.seed = Random.Range(0, 100000);
+            foreach (Noise n in eGen.noises) n.seed = Random.Range(0, 100000);
+            foreach (Noise n in mGen.noises) n.seed = Random.Range(0, 100000);
+        }
     }
     private void Update()
     {
@@ -109,7 +167,27 @@ public class TerrainGenerator : MonoBehaviour
                 {
                     int cX = playerChunk.x + i;
                     int cY = playerChunk.y + j;
-                    generateChunk(cX, cY);
+                    //generateChunk(cX, cY);
+                    NewGenerator(cX, cY);
+                }
+                if(Input.GetKeyDown(KeyCode.Space))
+                {
+                    float humidity, temperature, evil, magic, life;
+                    int x = (int)player.position.x;
+                    int y = (int)player.position.y;
+                    humidity = GetNoise(hGen, x, y);
+                    temperature = GetNoise(tGen, x, y);
+                    evil = GetNoise(eGen, x, y);
+                    magic = GetNoise(mGen, x, y);
+                    life = GetNoise(lGen, x, y);
+                    Biome a = new Biome();
+                    foreach(Biome b in biomes)
+                        if(b.IsBiomeAllowed(humidity,temperature,evil,magic,life))
+                        {
+                            a = b;
+                            break;
+                        }
+                    Debug.Log($"This is {a.name}\nParams:{humidity},{temperature},{evil},{magic},{life}");
                 }
             }
     }

@@ -13,12 +13,12 @@ public class GeneratorInspector : Editor
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Generate"))
         {
-            G.generateChunk(0,0);
+            //G.generateChunk(0,0);
         }
         if (GUILayout.Button("Clear"))
         {
-            G.ground.ClearAllTiles();
-            G.boundary.ClearAllTiles();
+            //G.ground.ClearAllTiles();
+            //G.boundary.ClearAllTiles();
         }
         GUILayout.EndHorizontal();
     }
