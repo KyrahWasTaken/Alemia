@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     Entity stats;
     public float speed;
     public bool isAtacking;
+    public Item defaultItem;
     void Start()
     {
         isAtacking = false;
@@ -16,12 +17,22 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !isAtacking)
+        if (Input.GetMouseButtonDown(0))
         {
             Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+
+            if(!isAtacking)
             StartCoroutine(Attack(direction));
             
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            PickUpItem();
+        }
+    }
+    private void PickUpItem()
+    {
+        stats.tryPickUpItem(defaultItem,3);
     }
 
     private IEnumerator Attack(Vector2 direction)

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba6de5b54371b2343838a799c029c930, type: 3}
+  m_Name: Stone
+  m_EditorClassIdentifier: 
+  displayName: Stone
+  nameID: Stone
+  StackCount: 64
+  sprite: {fileID: -2898715833006867360, guid: ac35409a44b2c14419ad782ac27ca480, type: 3}

@@ -6,10 +6,22 @@ public enum EntityType
 {
     Beast, Humanoid, Sentient, Undead, Arachnid, Slime, Psyonic
 }
+[System.Serializable]
+public class ItemStack
+{
+    public Item item;
+    public int count;
+    public ItemStack(Item i, int c)
+        {
+            item = i; count = c;
+        }
+}
 public class Entity : MonoBehaviour
 {
     public EntityType[] entityTags;
     public GameObject hitObject;
+    public List<ItemStack> inventory;
+
     #region characteristics
     public int baseHealth;
     public int maxHealth;
@@ -26,6 +38,8 @@ public class Entity : MonoBehaviour
     public float speed;
     public float attackSpeed;
     public int damage;
+
+    public int inventoryCapacity;
     #endregion
     #region skills
     public int physicalSkills;
@@ -36,6 +50,10 @@ public class Entity : MonoBehaviour
     #region abilities
     #endregion
     public delegate void changeOnHP(int max, int current);
+    private void DoNothingHaha(int max, int current)
+    {
+        return;
+    }
     public event changeOnHP OnHPChanged;
     public void changeHealth(int value)
     {
@@ -44,6 +62,7 @@ public class Entity : MonoBehaviour
             Destroy(gameObject);
         OnHPChanged.Invoke(maxHealth, health);
     }
+
     void UpdateCharacteristics()
     {
         maxHealth = baseHealth + physicalSkills * 5 + empathySkills;
@@ -59,4 +78,38 @@ public class Entity : MonoBehaviour
         a.GetComponent<Hit>().direction = direction;
         a.GetComponent<Hit>().self = transform;
     }
+    public bool tryPickUpItem(Item item, int count)
+    {
+        foreach(ItemStack a in inventory)
+        {
+
+            if (a.count < a.item.StackCount && a.item.nameID == item.nameID)
+            {
+                a.count += count;
+                if (a.count > a.item.StackCount)
+                {
+
+                    count = a.count-item.StackCount;
+                    a.count = a.item.StackCount;
+                }    
+                else
+                {
+                    count = 0;
+                    return true;
+                }
+            }
+        }
+        if (inventory.Count < inventoryCapacity)
+        {
+                inventory.Add(new ItemStack(item, count));
+            return true;
+        }
+        return false;
+    }
+    public void Start()
+    {
+        inventory = new List<ItemStack>();
+        OnHPChanged += DoNothingHaha;
+    }
+
 }

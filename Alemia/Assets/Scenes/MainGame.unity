@@ -193,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   isAtacking: 0
+  defaultItem: {fileID: 254249595}
 --- !u!61 &39230222
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -233,6 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityTags: 
   hitObject: {fileID: 4698822389979498453, guid: c1b01d74027aea6478365c1967adf919, type: 3}
+  inventory: []
   baseHealth: 10
   maxHealth: 10
   health: 10
@@ -245,6 +247,7 @@ MonoBehaviour:
   speed: 0
   attackSpeed: 2
   damage: 0
+  inventoryCapacity: 10
   physicalSkills: 0
   intellectualSkills: 0
   magicSkills: 0
@@ -284,6 +287,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0.17004395, y: 63.117996}
   m_SizeDelta: {x: -0.66000366, y: -88.463}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &254249594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 254249596}
+  - component: {fileID: 254249595}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &254249595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254249594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a231722096424e44eaa2a120aa79d2ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 0f13aab1055a77c4a9d599246aafb146, type: 2}
+  Count: 64
+--- !u!4 &254249596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254249594}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.550088, y: 4.6486297, z: -580.2325}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &492581635
 GameObject:
   m_ObjectHideFlags: 0
