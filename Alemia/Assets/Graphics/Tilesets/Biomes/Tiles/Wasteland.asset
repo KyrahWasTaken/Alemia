@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wasteland
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 4966732595609684114, guid: 1de6424899e1ee048b3c3ab08bbbee3f, type: 3}
-  m_Color: {r: 1, g: 0.95634604, b: 0, a: 1}
+  m_Color: {r: 0.5943396, g: 0.34509686, b: 0.03027763, a: 1}
   m_Transform:
     e00: 1
     e01: 0

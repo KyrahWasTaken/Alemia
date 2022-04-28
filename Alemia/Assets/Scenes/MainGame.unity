@@ -3932,25 +3932,41 @@ MonoBehaviour:
     noises:
     - strength: 1
       seed: 5367
-      scaleX: 100
-      scaleY: 100
+      scaleX: 500
+      scaleY: 500
+    - strength: 2
+      seed: 5367
+      scaleX: 250
+      scaleY: 250
+    - strength: 4
+      seed: 5367
+      scaleX: 125
+      scaleY: 125
   tGen:
     noises:
     - strength: 1
-      seed: 86348540
-      scaleX: 150
-      scaleY: 150
+      seed: 57532
+      scaleX: 500
+      scaleY: 500
+    - strength: 2
+      seed: 57532
+      scaleX: 250
+      scaleY: 250
+    - strength: 4
+      seed: 57532
+      scaleX: 125
+      scaleY: 125
   eGen:
     noises:
     - strength: 1
       seed: 500
       scaleX: 500
       scaleY: 500
-    - strength: 0.5
+    - strength: 2
       seed: 1012455
       scaleX: 250
       scaleY: 250
-    - strength: 0.25
+    - strength: 4
       seed: 10105436
       scaleX: 125
       scaleY: 125
@@ -3958,159 +3974,161 @@ MonoBehaviour:
     noises:
     - strength: 1
       seed: 153535
+      scaleX: 500
+      scaleY: 500
+    - strength: 2
+      seed: 123222
+      scaleX: 250
+      scaleY: 250
+    - strength: 4
+      seed: 123222
       scaleX: 125
       scaleY: 125
-    - strength: 0.5
-      seed: 123222
-      scaleX: 65
-      scaleY: 65
   lGen:
     noises:
     - strength: 1
       seed: 1051035
+      scaleX: 500
+      scaleY: 500
+    - strength: 2
+      seed: 1051035
       scaleX: 250
       scaleY: 250
+    - strength: 4
+      seed: 1051035
+      scaleX: 125
+      scaleY: 125
+    - strength: 8
+      seed: 1051035
+      scaleX: 65
+      scaleY: 65
   biomes:
   - name: MagicLands
-    Humidity: {x: 0.4, y: 0.7}
-    Evil: {x: 0, y: 0.4}
-    Temperature: {x: 0.3, y: 0.6}
-    Magic: {x: 0.3, y: 1}
-    Life: {x: 0.3, y: 1}
-    biomeTile: {fileID: 11400000, guid: 4f923a6c9749511499d2aa1c4c8099db, type: 2}
-  - name: FairyForest
-    Humidity: {x: 0.4, y: 0.7}
-    Evil: {x: 0, y: 0.3}
-    Temperature: {x: 0.4, y: 0.6}
-    Magic: {x: 0.7, y: 1}
-    Life: {x: 0.7, y: 1}
-    biomeTile: {fileID: 11400000, guid: 28f9ef45ce167b2438bb2b39233b4242, type: 2}
-  - name: Swamp
-    Humidity: {x: 0.6, y: 0.8}
-    Evil: {x: 0, y: 1}
-    Temperature: {x: 0.5, y: 0.8}
-    Magic: {x: 0.3, y: 1}
-    Life: {x: 0.6, y: 1}
-    biomeTile: {fileID: 11400000, guid: 62421c6b46efa55459820cfe1f78bc5e, type: 2}
-  - name: ColdSwamp
-    Humidity: {x: 0.6, y: 0.8}
-    Evil: {x: 0, y: 1}
-    Temperature: {x: 0.1, y: 0.3}
-    Magic: {x: 0, y: 1}
-    Life: {x: 0.5, y: 1}
-    biomeTile: {fileID: 11400000, guid: 95c4be6eb7744f34b87d649b963c335c, type: 2}
-  - name: Desert
-    Humidity: {x: 0, y: 0.3}
-    Evil: {x: 0, y: 1}
-    Temperature: {x: 0.7, y: 1}
-    Magic: {x: 0, y: 1}
-    Life: {x: 0, y: 0.2}
-    biomeTile: {fileID: 11400000, guid: 8f997b54e8214ae4eaabb673a25e20f1, type: 2}
-  - name: Wasteland
-    Humidity: {x: 0, y: 0.3}
-    Evil: {x: 0, y: 1}
-    Temperature: {x: 0.4, y: 0.7}
-    Magic: {x: 0, y: 1}
-    Life: {x: 0, y: 0.4}
-    biomeTile: {fileID: 11400000, guid: 1f7fae234afe03745bfd3700bb8eb5d1, type: 2}
-  - name: WoodLand
-    Humidity: {x: 0.5, y: 0.65}
-    Evil: {x: 0, y: 1}
-    Temperature: {x: 0.3, y: 0.6}
-    Magic: {x: 0, y: 1}
-    Life: {x: 0.5, y: 0.7}
-    biomeTile: {fileID: 11400000, guid: 41f1af13c06116643938b990cc47b6a0, type: 2}
-  - name: DeadLands
-    Humidity: {x: 0, y: 0.1}
-    Evil: {x: 0.6, y: 1}
-    Temperature: {x: 0, y: 1}
-    Magic: {x: 0, y: 0.7}
-    Life: {x: 0, y: 0.3}
-    biomeTile: {fileID: 11400000, guid: 4b07642fb68621340b9ec093acfb6c79, type: 2}
-  - name: Plains
-    Humidity: {x: 0.4, y: 0.6}
+    Humidity: {x: 0, y: 0.5}
     Evil: {x: 0, y: 1}
     Temperature: {x: 0.3, y: 0.7}
-    Magic: {x: 0, y: 1}
-    Life: {x: 0.3, y: 0.6}
-    biomeTile: {fileID: 11400000, guid: 1861113b1950d354fbecc1ac88725622, type: 2}
-  - name: Steppe
-    Humidity: {x: 0.3, y: 0.5}
+    Magic: {x: 0.8, y: 1}
+    Life: {x: 0.2, y: 1}
+    biomeTile: {fileID: 11400000, guid: 4f923a6c9749511499d2aa1c4c8099db, type: 2}
+  - name: DeadLands
+    Humidity: {x: 0, y: 0.51}
+    Evil: {x: 0.7, y: 1}
+    Temperature: {x: 0.5, y: 1}
+    Magic: {x: 0.5, y: 1}
+    Life: {x: 0, y: 1}
+    biomeTile: {fileID: 11400000, guid: 4b07642fb68621340b9ec093acfb6c79, type: 2}
+  - name: IceLands
+    Humidity: {x: 0, y: 0.7}
     Evil: {x: 0, y: 1}
-    Temperature: {x: 0.5, y: 0.7}
+    Temperature: {x: 0, y: 0.15}
     Magic: {x: 0, y: 1}
-    Life: {x: 0.3, y: 0.6}
-    biomeTile: {fileID: 11400000, guid: f1b03701d72c19b448792cf4945713d8, type: 2}
-  - name: MidLands
-    Humidity: {x: 0.2, y: 0.5}
+    Life: {x: 0, y: 1}
+    biomeTile: {fileID: 11400000, guid: 9eaa7c996ef85894c8c288c920f81284, type: 2}
+  - name: ColdMarsh
+    Humidity: {x: 0.45, y: 0.5}
     Evil: {x: 0, y: 1}
-    Temperature: {x: 0.2, y: 0.5}
+    Temperature: {x: 0.15, y: 0.25}
     Magic: {x: 0, y: 1}
-    Life: {x: 0.3, y: 0.6}
-    biomeTile: {fileID: 11400000, guid: b6fd5a33e94a38a4e8279a7d0e9cb6fb, type: 2}
-  - name: MidAlpes
-    Humidity: {x: 0.2, y: 0.5}
-    Evil: {x: 0, y: 1}
-    Temperature: {x: 0.2, y: 0.5}
-    Magic: {x: 0, y: 1}
-    Life: {x: 0.5, y: 1}
-    biomeTile: {fileID: 11400000, guid: 1aeb398d2596d214a99d311890c293b5, type: 2}
-  - name: Jungle
-    Humidity: {x: 0.2, y: 0.6}
-    Evil: {x: 0, y: 1}
-    Temperature: {x: 0.2, y: 0.6}
-    Magic: {x: 0, y: 1}
-    Life: {x: 0.4, y: 0.6}
-    biomeTile: {fileID: 11400000, guid: 30966d640ceaaf4489cb19be6fb95aa1, type: 2}
-  - name: Savanna
-    Humidity: {x: 0.1, y: 0.4}
-    Evil: {x: 0, y: 1}
-    Temperature: {x: 0.3, y: 0.6}
-    Magic: {x: 0, y: 1}
-    Life: {x: 0.2, y: 0.6}
-    biomeTile: {fileID: 11400000, guid: 02f8151b9ea593947b80482236217c9c, type: 2}
-  - name: MangroveWoods
-    Humidity: {x: 0.6, y: 0.8}
-    Evil: {x: 0, y: 1}
-    Temperature: {x: 0.3, y: 0.6}
-    Magic: {x: 0, y: 1}
-    Life: {x: 0.4, y: 1}
-    biomeTile: {fileID: 11400000, guid: 763206f70988e5c418069b584a41b6f1, type: 2}
+    Life: {x: 0, y: 0.5}
+    biomeTile: {fileID: 11400000, guid: 14226a663e4add040aec54b6eb9e3ae0, type: 2}
   - name: Marsh
-    Humidity: {x: 0.6, y: 0.8}
+    Humidity: {x: 0.45, y: 0.5}
     Evil: {x: 0, y: 1}
     Temperature: {x: 0.3, y: 0.5}
     Magic: {x: 0, y: 1}
     Life: {x: 0, y: 0.5}
     biomeTile: {fileID: 11400000, guid: 12004a6e740a3884eb11b09bcf5adb0a, type: 2}
-  - name: ColdMarsh
-    Humidity: {x: 0.6, y: 0.8}
+  - name: Tundra
+    Humidity: {x: 0, y: 0.5}
     Evil: {x: 0, y: 1}
-    Temperature: {x: 0.1, y: 0.3}
+    Temperature: {x: 0, y: 0.25}
     Magic: {x: 0, y: 1}
-    Life: {x: 0, y: 0.5}
-    biomeTile: {fileID: 11400000, guid: 14226a663e4add040aec54b6eb9e3ae0, type: 2}
+    Life: {x: 0, y: 1}
+    biomeTile: {fileID: 11400000, guid: fd0c11cdc839cb948b58060d943e9a86, type: 2}
+  - name: MangroveWoods
+    Humidity: {x: 0.5, y: 0.55}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.4, y: 1}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0.6, y: 1}
+    biomeTile: {fileID: 11400000, guid: 763206f70988e5c418069b584a41b6f1, type: 2}
+  - name: Jungle
+    Humidity: {x: 0, y: 0.5}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.4, y: 1}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0.6, y: 1}
+    biomeTile: {fileID: 11400000, guid: 30966d640ceaaf4489cb19be6fb95aa1, type: 2}
+  - name: FairyForest
+    Humidity: {x: 0, y: 0.45}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.3, y: 0.6}
+    Magic: {x: 0.7, y: 1}
+    Life: {x: 0.7, y: 1}
+    biomeTile: {fileID: 11400000, guid: 28f9ef45ce167b2438bb2b39233b4242, type: 2}
+  - name: MidAlpes
+    Humidity: {x: 0.3, y: 0.4}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.4, y: 0.5}
+    Magic: {x: 0.3, y: 1}
+    Life: {x: 0.5, y: 0.6}
+    biomeTile: {fileID: 11400000, guid: 1aeb398d2596d214a99d311890c293b5, type: 2}
+  - name: WoodLand
+    Humidity: {x: 0, y: 0.45}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.3, y: 0.4}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0.5, y: 0.7}
+    biomeTile: {fileID: 11400000, guid: 41f1af13c06116643938b990cc47b6a0, type: 2}
+  - name: MidLands
+    Humidity: {x: 0, y: 0.45}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.4, y: 0.6}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0.2, y: 0.6}
+    biomeTile: {fileID: 11400000, guid: b6fd5a33e94a38a4e8279a7d0e9cb6fb, type: 2}
+  - name: Savanna
+    Humidity: {x: 0, y: 0.45}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.65, y: 1}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0.5, y: 1}
+    biomeTile: {fileID: 11400000, guid: 02f8151b9ea593947b80482236217c9c, type: 2}
+  - name: Desert
+    Humidity: {x: 0, y: 0.5}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.8, y: 1}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0, y: 1}
+    biomeTile: {fileID: 11400000, guid: 8f997b54e8214ae4eaabb673a25e20f1, type: 2}
+  - name: Steppe
+    Humidity: {x: 0, y: 0.45}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.6, y: 1}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0.3, y: 1}
+    biomeTile: {fileID: 11400000, guid: f1b03701d72c19b448792cf4945713d8, type: 2}
+  - name: Plains
+    Humidity: {x: 0, y: 0.45}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0, y: 1}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0.2, y: 1}
+    biomeTile: {fileID: 11400000, guid: 1861113b1950d354fbecc1ac88725622, type: 2}
+  - name: Wasteland
+    Humidity: {x: 0, y: 0.5}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0, y: 1}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0, y: 1}
+    biomeTile: {fileID: 11400000, guid: 1f7fae234afe03745bfd3700bb8eb5d1, type: 2}
   - name: Ocean
-    Humidity: {x: 0.8, y: 1}
+    Humidity: {x: 0.5, y: 1}
     Evil: {x: 0, y: 1}
     Temperature: {x: 0, y: 1}
     Magic: {x: 0, y: 1}
     Life: {x: 0, y: 1}
     biomeTile: {fileID: 11400000, guid: a345fcc9207f7684888ba8c2b512bd16, type: 2}
-  - name: Tundra
-    Humidity: {x: 0.2, y: 0.6}
-    Evil: {x: 0, y: 1}
-    Temperature: {x: 0.1, y: 0.3}
-    Magic: {x: 0, y: 1}
-    Life: {x: 0, y: 1}
-    biomeTile: {fileID: 11400000, guid: fd0c11cdc839cb948b58060d943e9a86, type: 2}
-  - name: IceLands
-    Humidity: {x: 0, y: 0.3}
-    Evil: {x: 0, y: 1}
-    Temperature: {x: 0, y: 0.3}
-    Magic: {x: 0, y: 1}
-    Life: {x: 0, y: 1}
-    biomeTile: {fileID: 11400000, guid: 9eaa7c996ef85894c8c288c920f81284, type: 2}
   - name: StrangeLand
     Humidity: {x: 0, y: 1}
     Evil: {x: 0, y: 1}
@@ -4118,7 +4136,7 @@ MonoBehaviour:
     Magic: {x: 0, y: 1}
     Life: {x: 0, y: 1}
     biomeTile: {fileID: 11400000, guid: 95c4be6eb7744f34b87d649b963c335c, type: 2}
-  chunkSize: 128
+  chunkSize: 256
   chunkRenderDistance: 2
   maxChunksLoaded: 100
 --- !u!4 &1655114768

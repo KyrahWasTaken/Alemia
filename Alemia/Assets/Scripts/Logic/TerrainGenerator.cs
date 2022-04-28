@@ -125,27 +125,28 @@ public class TerrainGenerator : MonoBehaviour
                 biomesTM.SetTile(new Vector3Int(x, y, 0), biomes.Last().biomeTile);
                 foreach(Biome b in biomes)
                 {
-                    if(b.IsBiomeAllowed(humidity,temperature,evil,magic,life))
+                    if(b.IsBiomeAllowed(humidity,temperature,evil,magic,life)&&b.name!="StrangeLand")
                     {
                         biomesTM.SetTile(new Vector3Int(x,y,0), b.biomeTile);
                         AB.Add(b);
                     }
                 }
-                float eval = 5;
+                float eval = float.MaxValue;
                 int biomeNo = 0;
                 for (int e = 0; e < AB.Count; e++)
                 {
-                    float eH = Mathf.Abs(humidity - (AB[e].Humidity.x + AB[e].Humidity.y) / 2);
+                    float eH = Mathf.Abs(humidity - (AB[e].Humidity.x + AB[e].Humidity.y) / 2)*(AB[e].Humidity.y-AB[e].Humidity.x);
                     float eT = Mathf.Abs(temperature - (AB[e].Temperature.x + AB[e].Temperature.y) / 2);
                     float eE = Mathf.Abs(evil - (AB[e].Evil.x + AB[e].Evil.y) / 2);
                     float eM = Mathf.Abs(magic - (AB[e].Magic.x + AB[e].Magic.y) / 2);
                     float eL = Mathf.Abs(life - (AB[e].Life.x + AB[e].Life.y) / 2);
                     if (eval < eH + eT + eE + eM + eL)
                     {
-                        eval = eH + eT + eE + eM + eL;
-                        biomeNo = e;
+                            eval = eH + eT + eE + eM + eL;
+                            biomeNo = e;
                     }
                 }
+                    if(AB.Count>0)
                     biomesTM.SetTile(new Vector3Int(x, y, 0), AB[biomeNo].biomeTile);
             }
         }
