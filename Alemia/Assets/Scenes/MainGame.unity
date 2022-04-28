@@ -3992,6 +3992,13 @@ MonoBehaviour:
     Magic: {x: 0.3, y: 1}
     Life: {x: 0.6, y: 1}
     biomeTile: {fileID: 11400000, guid: 62421c6b46efa55459820cfe1f78bc5e, type: 2}
+  - name: ColdSwamp
+    Humidity: {x: 0.6, y: 0.8}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.1, y: 0.3}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0.5, y: 1}
+    biomeTile: {fileID: 11400000, guid: 95c4be6eb7744f34b87d649b963c335c, type: 2}
   - name: Desert
     Humidity: {x: 0, y: 0.3}
     Evil: {x: 0, y: 1}
@@ -4041,6 +4048,13 @@ MonoBehaviour:
     Magic: {x: 0, y: 1}
     Life: {x: 0.3, y: 0.6}
     biomeTile: {fileID: 11400000, guid: b6fd5a33e94a38a4e8279a7d0e9cb6fb, type: 2}
+  - name: MidAlpes
+    Humidity: {x: 0.2, y: 0.5}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.2, y: 0.5}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0.5, y: 1}
+    biomeTile: {fileID: 11400000, guid: 1aeb398d2596d214a99d311890c293b5, type: 2}
   - name: Jungle
     Humidity: {x: 0.2, y: 0.6}
     Evil: {x: 0, y: 1}
@@ -4069,6 +4083,13 @@ MonoBehaviour:
     Magic: {x: 0, y: 1}
     Life: {x: 0, y: 0.5}
     biomeTile: {fileID: 11400000, guid: 12004a6e740a3884eb11b09bcf5adb0a, type: 2}
+  - name: ColdMarsh
+    Humidity: {x: 0.6, y: 0.8}
+    Evil: {x: 0, y: 1}
+    Temperature: {x: 0.1, y: 0.3}
+    Magic: {x: 0, y: 1}
+    Life: {x: 0, y: 0.5}
+    biomeTile: {fileID: 11400000, guid: 14226a663e4add040aec54b6eb9e3ae0, type: 2}
   - name: Ocean
     Humidity: {x: 0.8, y: 1}
     Evil: {x: 0, y: 1}
@@ -4097,14 +4118,7 @@ MonoBehaviour:
     Magic: {x: 0, y: 1}
     Life: {x: 0, y: 1}
     biomeTile: {fileID: 11400000, guid: 95c4be6eb7744f34b87d649b963c335c, type: 2}
-  - name: IcePeakWoods
-    Humidity: {x: 0, y: 1}
-    Evil: {x: 0, y: 1}
-    Temperature: {x: 0, y: 1}
-    Magic: {x: 0, y: 1}
-    Life: {x: 0, y: 1}
-    biomeTile: {fileID: 11400000, guid: 95c4be6eb7744f34b87d649b963c335c, type: 2}
-  chunkSize: 256
+  chunkSize: 128
   chunkRenderDistance: 2
   maxChunksLoaded: 100
 --- !u!4 &1655114768
@@ -4140,6 +4154,10 @@ PrefabInstance:
     - target: {fileID: 2522733283839966720, guid: 12f5aba39506200429ec15d47300808e, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522733283839966720, guid: 12f5aba39506200429ec15d47300808e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5828895973601720410, guid: 12f5aba39506200429ec15d47300808e, type: 3}
       propertyPath: m_RootOrder

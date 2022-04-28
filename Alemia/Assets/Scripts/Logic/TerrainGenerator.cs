@@ -23,11 +23,11 @@ public class TerrainGenerator : MonoBehaviour
         public Vector2 Life;
         public bool IsBiomeAllowed(float h, float t, float e, float m, float l)
         {
-            if (h > Humidity.x && h < Humidity.y)
-                if (e > Evil.x && e < Evil.y)
-                    if (t > Temperature.x && t < Temperature.y)
-                        if (m > Magic.x && m < Magic.y)
-                            if (l > Life.x && l < Life.y)
+            if (h >= Humidity.x && h <= Humidity.y)
+                if (e >= Evil.x && e <= Evil.y)
+                    if (t >= Temperature.x && t <= Temperature.y)
+                        if (m >= Magic.x && m <= Magic.y)
+                            if (l >= Life.x && l <= Life.y)
                                 return true;
             return false;
         }
@@ -110,16 +110,17 @@ public class TerrainGenerator : MonoBehaviour
         {
             for(int j = 0; j<chunkSize; j++)
             {
+                List<Biome> AB = new List<Biome>();
                 int x = chunkX * chunkSize + i;
                 int y = chunkY * chunkSize + j;
                 
                 float humidity, temperature, evil, magic, life;
-                
-                humidity =      GetNoise(hGen, x, y);
-                temperature =   GetNoise(tGen, x, y);
-                evil =          GetNoise(eGen, x, y);
-                magic =         GetNoise(mGen, x, y);
-                life =          GetNoise(lGen, x, y);
+
+                humidity =      Mathf.Clamp(GetNoise(hGen, x, y), 0, 1);
+                temperature =   Mathf.Clamp(GetNoise(tGen, x, y), 0, 1);
+                evil =          Mathf.Clamp(GetNoise(eGen, x, y), 0, 1);
+                magic =         Mathf.Clamp(GetNoise(mGen, x, y), 0, 1);
+                life =          Mathf.Clamp(GetNoise(lGen, x, y), 0, 1);
                 //Debug.Log($"Params:{humidity},{temperature},{evil},{magic},{life}");
                 biomesTM.SetTile(new Vector3Int(x, y, 0), biomes.Last().biomeTile);
                 foreach(Biome b in biomes)
@@ -127,9 +128,25 @@ public class TerrainGenerator : MonoBehaviour
                     if(b.IsBiomeAllowed(humidity,temperature,evil,magic,life))
                     {
                         biomesTM.SetTile(new Vector3Int(x,y,0), b.biomeTile);
-                        break;
+                        AB.Add(b);
                     }
                 }
+                float eval = 5;
+                int biomeNo = 0;
+                for (int e = 0; e < AB.Count; e++)
+                {
+                    float eH = Mathf.Abs(humidity - (AB[e].Humidity.x + AB[e].Humidity.y) / 2);
+                    float eT = Mathf.Abs(temperature - (AB[e].Temperature.x + AB[e].Temperature.y) / 2);
+                    float eE = Mathf.Abs(evil - (AB[e].Evil.x + AB[e].Evil.y) / 2);
+                    float eM = Mathf.Abs(magic - (AB[e].Magic.x + AB[e].Magic.y) / 2);
+                    float eL = Mathf.Abs(life - (AB[e].Life.x + AB[e].Life.y) / 2);
+                    if (eval < eH + eT + eE + eM + eL)
+                    {
+                        eval = eH + eT + eE + eM + eL;
+                        biomeNo = e;
+                    }
+                }
+                    biomesTM.SetTile(new Vector3Int(x, y, 0), AB[biomeNo].biomeTile);
             }
         }
     }
@@ -170,25 +187,25 @@ public class TerrainGenerator : MonoBehaviour
                     //generateChunk(cX, cY);
                     NewGenerator(cX, cY);
                 }
-                if(Input.GetKeyDown(KeyCode.Space))
-                {
-                    float humidity, temperature, evil, magic, life;
-                    int x = (int)player.position.x;
-                    int y = (int)player.position.y;
-                    humidity = GetNoise(hGen, x, y);
-                    temperature = GetNoise(tGen, x, y);
-                    evil = GetNoise(eGen, x, y);
-                    magic = GetNoise(mGen, x, y);
-                    life = GetNoise(lGen, x, y);
-                    Biome a = new Biome();
-                    foreach(Biome b in biomes)
-                        if(b.IsBiomeAllowed(humidity,temperature,evil,magic,life))
-                        {
-                            a = b;
-                            break;
-                        }
-                    Debug.Log($"This is {a.name}\nParams:{humidity},{temperature},{evil},{magic},{life}");
-                }
             }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            float humidity, temperature, evil, magic, life;
+            int x = (int)player.position.x;
+            int y = (int)player.position.y;
+            humidity = GetNoise(hGen, x, y);
+            temperature = GetNoise(tGen, x, y);
+            evil = GetNoise(eGen, x, y);
+            magic = GetNoise(mGen, x, y);
+            life = GetNoise(lGen, x, y);
+            Biome a = new Biome();
+            foreach (Biome b in biomes)
+                if (b.IsBiomeAllowed(humidity, temperature, evil, magic, life))
+                {
+                    a = b;
+                    break;
+                }
+            Debug.Log($"This is {a.name}\nParams:{humidity},{evil},{temperature},{magic},{life}");
+        }
     }
 }
