@@ -50,11 +50,13 @@ public class Entity : MonoBehaviour
     #region abilities
     #endregion
     public delegate void changeOnHP(int max, int current);
+    public delegate void updateInventory(Entity Player);
     private void DoNothingHaha(int max, int current)
     {
         return;
     }
     public event changeOnHP OnHPChanged;
+    public event updateInventory OnInventoryChanged;
     public void changeHealth(int value)
     {
         health += value;
@@ -95,6 +97,7 @@ public class Entity : MonoBehaviour
                 else
                 {
                     count = 0;
+                    OnInventoryChanged.Invoke(this);
                     return true;
                 }
             }
@@ -102,8 +105,10 @@ public class Entity : MonoBehaviour
         if (inventory.Count < inventoryCapacity)
         {
                 inventory.Add(new ItemStack(item, count));
+                OnInventoryChanged.Invoke(this);
             return true;
         }
+        OnInventoryChanged.Invoke(this);
         return false;
     }
     public void Start()

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Stone
   nameID: Stone
-  StackCount: 64
+  StackCount: 4
   sprite: {fileID: -2898715833006867360, guid: ac35409a44b2c14419ad782ac27ca480, type: 3}
