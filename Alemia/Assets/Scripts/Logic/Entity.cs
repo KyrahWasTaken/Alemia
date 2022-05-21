@@ -6,16 +6,6 @@ public enum EntityType
 {
     Beast, Humanoid, Sentient, Undead, Arachnid, Slime, Psyonic
 }
-[System.Serializable]
-public class ItemStack
-{
-    public Item item;
-    public int count;
-    public ItemStack(Item i, int c)
-        {
-            item = i; count = c;
-        }
-}
 public class Entity : MonoBehaviour
 {
     public EntityType[] entityTags;

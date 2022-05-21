@@ -3,75 +3,88 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+
 public class LootInventory : MonoBehaviour
 {
-    public int inventoryWidth;
-    public GameObject cell;
-    public GameObject canvas;
-    public GameObject canvasInstance;
-    public ItemStack example;
-    List<ItemStack> cells;
-    public void ToggleUI(Vector3 pos)
+    public RectTransform inventory;
+    public RectTransform cell;
+    public Entity player;
+    [Range(0, 1)]
+    public float lerp;
+    public float searchRadius;
+
+    public bool isInventoryToggled;
+
+    public void CheckInventory(List<LootTable> Loots)
     {
-        if (canvasInstance == null)
+        foreach (Transform child in inventory)
         {
-            canvasInstance = Instantiate(canvas, pos, Quaternion.identity, transform);
-            Render();
+            Destroy(child.gameObject);
+        }
+
+        int it = 0;
+        foreach (LootTable e in Loots)
+        foreach (ItemStack i in e.inventory)
+        {
+            RectTransform c = Instantiate(cell, transform);
+            c.anchoredPosition = new Vector3(0, cell.rect.height * it * -1);
+            c.Find("Name").GetComponent<TextMeshProUGUI>().text = i.item.name;
+            c.Find("Count").GetComponent<TextMeshProUGUI>().text = i.count.ToString();
+            c.Find("Image").GetComponent<Image>().sprite = i.item.sprite;
+            it++;
+        }
+    }
+    IEnumerator ToggleInventory()
+    {
+        float targetX;
+        if (!isInventoryToggled)
+        {
+            isInventoryToggled = true;
+            targetX = inventory.rect.width * -1;
         }
         else
-            Destroy(canvasInstance);
+        {
+            isInventoryToggled = false;
+            targetX = 0;
+        }
+        while (Mathf.Abs(inventory.anchoredPosition.x - targetX) > 0.1f)
+        {
+            float x = Mathf.Lerp(inventory.anchoredPosition.x, targetX, lerp);
+            inventory.anchoredPosition = Vector3.right * x;
+            yield return new WaitForEndOfFrame();
+        }
     }
-    public void DestroyUI()
-    {
-        Destroy(canvasInstance);
-    }
-
-    public void addItem(ItemStack item)
-    {
-        cells.Add(item);
-        if(canvasInstance != null)
-        Render();
-    }
-    void Render()
+    private void Start()
     {
         
-        Transform inv = canvasInstance.transform.Find("Inventory");
-        foreach (Transform child in inv)
-            Destroy(child.gameObject);
-        int iterator = 0;
-        foreach(ItemStack i in cells)
-        {
-            int x = (iterator) % inventoryWidth;
-            int y = -(iterator) / inventoryWidth;
-            Debug.Log(iterator);
-            Vector2Int pos = new Vector2Int(x,y);
-            Transform newCell = Instantiate(cell, (Vector2)pos, Quaternion.identity, inv).transform;
-            newCell.GetComponent<RectTransform>().anchoredPosition = new Vector2(x, y);
-            newCell.Find("Image").GetComponent<Image>().sprite = i.item.sprite;
-            newCell.Find("Count").GetComponent<TextMeshProUGUI>().text = i.count.ToString();
-            iterator++;
-        }
     }
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        cells = new List<ItemStack>();
-        cells.Add(example);
-        cells.Add(example);
-        cells.Add(example);
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            StopAllCoroutines();
+            CheckInventory(FindAllLoots(player.transform.position, searchRadius));
+            StartCoroutine(ToggleInventory());
+
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            StopAllCoroutines();
+            StartCoroutine(ToggleInventory());
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private List<LootTable> FindAllLoots(Vector3 pos, float radius)
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        List<LootTable> loots = new List<LootTable>();
+        foreach (Collider2D c in Physics2D.OverlapCircleAll(pos, radius))
         {
-            Debug.Log("HI");
-            ToggleUI(transform.position);
+            if (c.TryGetComponent(out LootTable l))
+            {
+                loots.Add(l);
+            }
         }
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            addItem(example);
-        }
+        return loots;
     }
 }
