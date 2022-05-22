@@ -24,7 +24,6 @@ public class Hit : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Got Triggered!");
         Entity a;
         if(other.TryGetComponent(out a))
         {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class Entity : MonoBehaviour
     public EntityType[] entityTags;
     public GameObject hitObject;
     public List<ItemStack> inventory;
+    public Transform DeathContainer;
 
     #region characteristics
     public int baseHealth;
@@ -51,8 +53,25 @@ public class Entity : MonoBehaviour
     {
         health += value;
         if (health <= 0)
-            Destroy(gameObject);
+            StartCoroutine(Die());
         OnHPChanged.Invoke(maxHealth, health);
+    }
+
+    private IEnumerator Die()
+    {
+        //do something e.g. start Animations or other activities
+        SpawnContainer();
+        Destroy(gameObject);
+        yield return new WaitForFixedUpdate();
+    }
+
+    private void SpawnContainer()
+    {
+        LootTable loot = Instantiate(DeathContainer,transform.position,Quaternion.identity).GetComponent<LootTable>();
+        foreach (ItemStack i in inventory)
+        {
+            loot.inventory.Add(i);
+        }
     }
 
     void UpdateCharacteristics()
@@ -103,7 +122,6 @@ public class Entity : MonoBehaviour
     }
     public void Start()
     {
-        inventory = new List<ItemStack>();
         OnHPChanged += DoNothingHaha;
     }
 
