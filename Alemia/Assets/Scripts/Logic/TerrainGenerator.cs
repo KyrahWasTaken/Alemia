@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
 {
-    #region Разное
+    #region Р Р°Р·РЅРѕРµ
     [System.Serializable]
     public struct Generator
     {
@@ -66,7 +66,7 @@ public class TerrainGenerator : MonoBehaviour
         return output / generator.noises.Sum(a=>a.strength);
     }
     #endregion
-    #region Параметры
+    #region РџР°СЂР°РјРµС‚СЂС‹
 
     public Generator hGen;
     public Generator tGen;
